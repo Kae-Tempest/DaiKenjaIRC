@@ -1,0 +1,14 @@
+{
+  "name": "daikanjabot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node --max-old-space-size=8192 Bot.js"
+  },
+  "author": "Kae",
+  "license": "ISC",
+  "dependencies": {
+    "tmi.js": "^1.7.1"
+  }
+}
