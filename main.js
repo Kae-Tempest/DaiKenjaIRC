@@ -4,7 +4,7 @@ const config = require('./config')
 const opts = {
     identity: {
         username: "Dai_Kenja",
-        password: "oauth:pz0756nq1q0c156duwdwf1j4pjsue2"
+        password: config.password
     },
     channels: ["katsuhiiko"]
 };
