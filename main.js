@@ -1,4 +1,5 @@
 const tmi = require('tmi.js');
+const config = require('./config')
 
 const opts = {
     identity: {
@@ -24,12 +25,12 @@ function onMessageHandler (target, context, msg, self) {
     const commandName = msg.trim();
 
     // If the command is known, let's execute it
-    if (commandName === PREFIX + 'dice') {
+    if (commandName === config.prefix + 'dice') {
         const sides = 6;
         let num = Math.floor(Math.random() * sides) + 1;
         client.say(target, `You rolled a ${num}`);
     }
-    if (commandName === PREFIX + 'hi') client.say(target, 'Hello World!');
+    if (commandName === config.prefix + 'hi') client.say(target, 'Hello World!');
 }
 // Called every time the bot connects to Twitch chat
 function onConnectedHandler (addr, port) {
