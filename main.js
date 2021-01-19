@@ -17,9 +17,12 @@ client.on('connected', onConnectedHandler);
 
 // Connect to Twitch:
 client.connect();
+
 // Called every time a message comes in
-function onMessageHandler (target, context, msg, self) {
-    if (self) { return; } // Ignore messages from the bot
+function onMessageHandler(target, context, msg, self) {
+    if (self) {
+        return;
+    } // Ignore messages from the bot
     const PREFIX = "!"
     // Remove whitespace from chat message
     const commandName = msg.trim();
@@ -32,7 +35,8 @@ function onMessageHandler (target, context, msg, self) {
     }
     if (commandName === config.prefix + 'hi') client.say(target, 'Hello World!');
 }
+
 // Called every time the bot connects to Twitch chat
-function onConnectedHandler (addr, port) {
+function onConnectedHandler(addr, port) {
     console.log(`* Connected to ${addr}:${port}`);
 }
