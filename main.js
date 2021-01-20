@@ -4,6 +4,10 @@ const chalk = require("chalk");
 const colors = new chalk.Instance({ level: 3 });
 
 const opts = {
+    connection: {
+        reconnect: true,
+        secure: true,
+    },
     identity: {
         username: "Dai_Kenja",
         password: config.password
@@ -12,20 +16,19 @@ const opts = {
 };
 
 const client = new tmi.client(opts)
-client.on('message', onMessageHandler);
-client.on('connected', onConnectedHandler);
-
 client.connect();
 
-function onMessageHandler(target, context, msg, self) {
-    const user = target;
-    const text = msg.trim();
-    const nick = (`${user}`);
-    console.log(`${nick} => ${text}`);
-
-    if (self) {
-        return;
-    }
+client.on("chat",(channel, userstate, message, self)=>{
+    if (self) return;
+    const user = userstate.username;
+    const text = message.trim();
+    const color = userstate.color
+    const nick = colors.hex(color)(`${user}`);
+    const arrow = '=>'
+    console.log(`${nick} ${arrow} ${text}`);
+})
+client.on('message', (target, context, msg, self)=>{
+    if (self) return;
     const commandName = msg.trim();
     if (commandName === config.prefix + 'dice') {
         const sides = 6;
@@ -34,8 +37,7 @@ function onMessageHandler(target, context, msg, self) {
     }
 
     if (commandName === config.prefix + 'hi') client.say(target, 'Hello World!');
-}
-
-function onConnectedHandler(addr, port) {
+});
+client.on('connected', (addr, port) =>{
     console.log(`* Connected to ${addr}:${port}`);
-}
+});
