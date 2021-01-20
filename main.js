@@ -22,13 +22,13 @@ client.on("chat", (channel, userstate, message, self) => {
 client.on('message', (target, context, msg, self) => {
     if (self) return;
     const commandName = msg.trim();
+    const discordLink = 'https://discord.gg/V9t5k5z'
     if (commandName === config.prefix + 'dice') {
         const sides = 6;
         let num = Math.floor(Math.random() * sides) + 1;
         client.say(target, ` You rolled => ${num}`)
     }
     if (commandName === config.prefix + 'hi') client.say(target, 'Hello World!');
-    const discordLink = 'https://discord.gg/V9t5k5z'
     if (commandName === config.prefix + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
     if (commandName === config.prefix + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
     if (commandName === config.prefix + 'purple') client.say(target, "Va suivre Purple ou j'te tape Kappa (https://www.twitch.tv/purpleorwel)")
