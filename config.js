@@ -1,4 +1,4 @@
 module.exports = {
     prefix: '!',
-    password: "oauth:key",
+    password: "oauth:oauth:fzlmi4wntaqytpw1fz9hpw881uv2la",
 }
