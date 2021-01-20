@@ -5,7 +5,7 @@ const colors = new chalk.Instance({level: 3});
 const opts = {
     connection: {reconnect: true, secure: true,},
     identity: {username: "Dai_Kenja", password: config.password},
-    channels: ["katsuhiiko"]
+    channels: ["katsuhiiko","purpleorwel"]
 };
 const client = new tmi.client(opts)
 client.connect();
@@ -31,6 +31,7 @@ client.on('message', (target, context, msg, self) => {
     const discordLink = 'https://discord.gg/V9t5k5z'
     if (commandName === config.prefix + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
     if (commandName === config.prefix + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
+    if (commandName === config.prefix + 'purple') client.say(target, "Va suivre Purple ou j'te tape Kappa (https://www.twitch.tv/purpleorwel)")
     if (commandName === config.prefix + 'git') client.say(target, 'mon Github => https://github.com/Kae-Tempest')
 });
 client.on('connected', () => {
