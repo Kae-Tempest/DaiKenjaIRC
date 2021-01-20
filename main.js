@@ -5,7 +5,7 @@ const colors = new chalk.Instance({level: 3});
 const opts = {
     connection: {reconnect: true, secure: true,},
     identity: {username: "Dai_Kenja", password: config.password},
-    channels: ["katsuhiiko","purpleorwel"]
+    channels: ["katsuhiiko"]
 };
 const client = new tmi.client(opts)
 client.connect();
