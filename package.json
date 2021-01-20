@@ -9,7 +9,7 @@
   "author": "Kae",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.1",
+    "chalk": "^4.1.0",
     "tmi.js": "^1.7.1"
   }
 }
