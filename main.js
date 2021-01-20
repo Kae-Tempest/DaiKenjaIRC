@@ -30,7 +30,7 @@ client.on('message', (target, context, msg, self) => {
     if (commandName === config.prefix + 'hi') client.say(target, 'Hello World!');
     const discordLink = 'https://discord.gg/V9t5k5z'
     if (commandName === config.prefix + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
-    if (commandName === config.prefix + 'skarab') client.say(target, "Va chez suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
+    if (commandName === config.prefix + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
     if (commandName === config.prefix + 'git') client.say(target, 'mon Github => https://github.com/Kae-Tempest')
 });
 client.on('connected', () => {
