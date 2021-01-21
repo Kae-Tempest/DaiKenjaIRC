@@ -5,7 +5,7 @@ const colors = new chalk.Instance({level: 3});
 const opts = {
     connection: {reconnect: true, secure: true,},
     identity: {username: "Dai_Kenja", password: config.password},
-    channels: ["katsuhiiko"]
+    channels: ["katsuhiiko","gnu_coding_cafe"]
 };
 const client = new tmi.client(opts)
 client.connect();
@@ -13,16 +13,17 @@ client.on("chat", (channel, userstate, message, self) => {
     if (self) return;
     const user = userstate.username;
     const text = message.trim();
-    let color = '';
-    if (userstate.color === null){
-        color = chalk.yellow(`${user}`)
-    } else {
-        color = userstate.color
-    }
-    let nick = colors.hex(color)(`${user}`);
     const arrow = '=>'
     const twoPoints = ':'
-    console.log(`${channel} ${twoPoints} ${nick} ${arrow} ${text}`);
+    if (userstate.color === null){
+        let nick = chalk.yellow(`${user}`)
+        console.log(`${channel} ${twoPoints} ${nick} ${arrow} ${text}`);
+    } else {
+        let color = userstate.color
+        let nick = colors.hex(color)(`${user}`);
+        console.log(`${channel} ${twoPoints} ${nick} ${arrow} ${text}`);
+    }
+
 })
 
 client.on('message', (target, context, msg, self) => {
