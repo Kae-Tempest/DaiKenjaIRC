@@ -13,10 +13,16 @@ client.on("chat", (channel, userstate, message, self) => {
     if (self) return;
     const user = userstate.username;
     const text = message.trim();
-    const color = userstate.color
-    const nick = colors.hex(color)(`${user}`);
+    let color = '';
+    if (userstate.color === null){
+        color = chalk.yellow(`${user}`)
+    } else {
+        color = userstate.color
+    }
+    let nick = colors.hex(color)(`${user}`);
     const arrow = '=>'
-    console.log(`${channel} ${arrow} ${nick} ${arrow} ${text}`);
+    const twoPoints = ':'
+    console.log(`${channel} ${twoPoints} ${nick} ${arrow} ${text}`);
 })
 
 client.on('message', (target, context, msg, self) => {
@@ -28,12 +34,20 @@ client.on('message', (target, context, msg, self) => {
         let num = Math.floor(Math.random() * sides) + 1;
         client.say(target, ` You rolled => ${num}`)
     }
+
+    let commandNameList = ['hi','discord','skarab','purple','git','hi skarab','battle','help'];
+
+
+
     if (commandName === config.prefix + 'hi') client.say(target, 'Hello World!');
     if (commandName === config.prefix + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
-    if (commandName === config.prefix + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
-    if (commandName === config.prefix + 'purple') client.say(target, "Va suivre Purple ou j'te tape Kappa (https://www.twitch.tv/purpleorwel)")
+    if (commandName === config.prefix + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa \n (https://www.twitch.tv/skarab42)")
+    if (commandName === config.prefix + 'purple') client.say(target, "Va suivre Purple ou j'te tape Kappa \n (https://www.twitch.tv/purpleorwel)")
     if (commandName === config.prefix + 'git') client.say(target, 'mon Github => https://github.com/Kae-Tempest')
     if (commandName === config.prefix + 'hi Skarab') client.say(target, '!say Salut Skarab')
+    if (commandName === config.prefix + 'battle') client.say(target, 'attend je dev ca, laisse moi le temps wesh')
+    if(commandName === config.prefix + 'help') client.say(target, `La liste des commandes est : ${(commandNameList).join(' || ')}`)
+
 });
 client.on('connected', () => {
     let now = new Date().toLocaleString('fr-FR')
