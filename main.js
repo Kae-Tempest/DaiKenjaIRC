@@ -25,7 +25,7 @@ client.on("chat", (channel, userstate, message, self) => {
     }
 })
 
-client.on('message', (target, context, msg, self, userstate) => {
+client.on('message', (target, context, msg, self) => {
     if (self) return;
     const commandName = msg.trim();
     const discordLink = 'https://discord.gg/V9t5k5z'
