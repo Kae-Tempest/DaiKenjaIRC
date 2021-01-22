@@ -23,7 +23,6 @@ client.on("chat", (channel, userstate, message, self) => {
         let nick = colors.hex(color)(`${user}`);
         console.log(`${channel} ${twoPoints} ${nick} ${arrow} ${text}`);
     }
-
 })
 
 client.on('message', (target, context, msg, self, userstate) => {
