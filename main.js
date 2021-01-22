@@ -5,7 +5,7 @@ const colors = new chalk.Instance({level: 3});
 const opts = {
     connection: {reconnect: true, secure: true,},
     identity: {username: "Dai_Kenja", password: config.password},
-    channels: ["katsuhiiko","gnu_coding_cafe"]
+    channels: ["katsuhiiko"]
 };
 const client = new tmi.client(opts)
 client.connect();
@@ -36,9 +36,7 @@ client.on('message', (target, context, msg, self) => {
         client.say(target, ` You rolled => ${num}`)
     }
 
-    let commandNameList = ['hi','discord','skarab','purple','git','hi skarab','battle','help'];
-
-
+    let commandNameList = ['dice','hi','discord','skarab','purple','git','hi skarab','battle','help'];
 
     if (commandName === config.prefix + 'hi') client.say(target, 'Hello World!');
     if (commandName === config.prefix + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
