@@ -36,15 +36,16 @@ client.on('message', (target, context, msg, self) => {
     if (commandName === config.prefix + 'git') client.say(target, 'mon Github => https://github.com/Kae-Tempest')
     if (commandName === config.prefix + 'project') client.say(target, 'Mon project un un RPG, actuellement disponible sur Discord, au futur disponible sur web, mobile et twitch.')
     if (commandName === config.prefix + 'help') client.say(target, `${commandNamelist.join(' || ')}`)
-    if (commandName === config.prefix + 'battle') {
+    if (commandName === config.prefix + 'battle') {target, battle()}
+
+    function battle () {
         let playerHP = 50;
         let hostileHP = 50;
-        for (let i = 1; hostileHP > 0 ; i++) {
-            const playerATK = Math.floor(Math.random() + Math.round(11));
-            client.say(target, `Tu attaqueras de ${playerATK}`)
-            const hostileATK = Math.floor(Math.random() + Math.round(11));
-            client.say(target, `Tu attaqueras de ${hostileATK}`)
-            const priority = Math.floor(Math.random() + Math.round(1));
+        const playerATK = Math.floor(Math.random() * Math.floor(10) + 1);
+        const hostileATK = Math.floor(Math.random() * Math.floor(10) + 1);
+        client.say(target, `Player ATK => ${playerATK} \n Monster ATK =>${hostileATK}`)
+        for (let i = 1; hostileHP > 0 && playerHP > 0; i++) {
+            const priority = Math.floor(Math.random() * Math.floor(1));
             if (priority === 0) {
                 playerHP -= hostileATK
                 hostileHP -= playerATK
@@ -53,11 +54,11 @@ client.on('message', (target, context, msg, self) => {
                 hostileHP -= playerATK
                 playerHP -= hostileATK
             }
-            if (hostileHP === 0) {
-                client.say(target, `Après ${i} tours tu as tué le monstre !`);
+            if (hostileHP <= 0) {
+                return client.say(target, `Après ${i} tours tu as tué le monstre !`);
             }
-            if (playerHP === 0) {
-                client.say(target, `Après ${i} tours tu as été tué par le monstre !`)
+            if (playerHP <= 0) {
+                return client.say(target, `Après ${i} tours tu as été tué par le monstre !`)
             }
         }
     }
