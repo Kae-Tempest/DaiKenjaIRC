@@ -29,7 +29,7 @@ client.on('message', (target, context, msg, self) => {
     if (self) return;
     const commandName = msg.trim();
     const discordLink = 'https://discord.gg/V9t5k5z'
-    commandNamelist = ['discord','skarab','purple','git','project']
+    let commandNamelist = ['discord','skarab','purple','git','project']
     if (commandName === config.prefix + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
     if (commandName === config.prefix + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
     if (commandName === config.prefix + 'purple') client.say(target, "Va suivre Purple ou j'te tape Kappa (https://www.twitch.tv/purpleorwel)")
