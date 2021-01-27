@@ -29,13 +29,13 @@ client.on('message', (target, context, msg, self) => {
     if (self) return;
     const commandName = msg.trim();
     const discordLink = 'https://discord.gg/V9t5k5z'
-    let commandNamelist = ['discord','skarab','purple','git','project']
+    let commandNamelist = ['discord','skarab','purple','git','project','battle']
     if (commandName === config.prefix + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
     if (commandName === config.prefix + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
     if (commandName === config.prefix + 'purple') client.say(target, "Va suivre Purple ou j'te tape Kappa (https://www.twitch.tv/purpleorwel)")
     if (commandName === config.prefix + 'git') client.say(target, 'mon Github => https://github.com/Kae-Tempest')
     if (commandName === config.prefix + 'project') client.say(target, 'Mon project un un RPG, actuellement disponible sur Discord, au futur disponible sur web, mobile et twitch.')
-    if (commandName === config.prefix + 'help') client.say(target, `${commandNamelist.join(' || ')}`)
+    if (commandName === config.prefix + 'help') client.say(target, `|| ${commandNamelist.join(' || ')} ||`)
     if (commandName === config.prefix + 'battle') {target, battle()}
 
     function battle () {
@@ -44,7 +44,7 @@ client.on('message', (target, context, msg, self) => {
         const playerATK = Math.floor(Math.random() * Math.floor(10) + 1);
         const hostileATK = Math.floor(Math.random() * Math.floor(10) + 1);
         client.say(target, `Player ATK => ${playerATK} \n Monster ATK =>${hostileATK}`)
-        for (let i = 1; hostileHP > 0 && playerHP > 0; i++) {
+        for (let i = 1; hostileHP >= 0 || playerHP > 0; i++) {
             const priority = Math.floor(Math.random() * Math.floor(1));
             if (priority === 0) {
                 playerHP -= hostileATK
