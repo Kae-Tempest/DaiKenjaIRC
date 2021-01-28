@@ -6,8 +6,8 @@ const CryptoJS = require('crypto-js');
 
 const opts = {
     connection: {reconnect: true, secure: true,},
-    identity: {username: "Dai_Kenja", password: config.data.auth.bot.client_id},
-    channels: ["alexcaussades"]
+    identity: {username: config.data.config.username, password: config.data.auth.bot.client_id},
+    channels: [config.data.channel.katsuhiiko]
 };
 const client = new tmi.client(opts)
 client.connect();
@@ -87,13 +87,13 @@ client.on('message', (target, context, msg, self) => {
     const commandName = msg.trim();
     const discordLink = 'https://discord.gg/V9t5k5z'
     let commandNamelist = ['discord','skarab','purple','git','project','battle']
-    if (commandName === config.prefix + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
-    if (commandName === config.prefix + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
-    if (commandName === config.prefix + 'purple') client.say(target, "Va suivre Purple ou j'te tape Kappa (https://www.twitch.tv/purpleorwel)")
-    if (commandName === config.prefix + 'git') client.say(target, 'mon Github => https://github.com/Kae-Tempest')
-    if (commandName === config.prefix + 'project') client.say(target, 'Mon project un un RPG, actuellement disponible sur Discord, au futur disponible sur web, mobile et twitch.')
-    if (commandName === config.prefix + 'help') client.say(target, `|| ${commandNamelist.join(' || ')} ||`)
-    if (commandName === config.prefix + 'battle') {target, battle()}
+    if (commandName === config.data.config.prefixe + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
+    if (commandName === config.data.config.prefixe + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
+    if (commandName === config.data.config.prefixe + 'purple') client.say(target, "Va suivre Purple ou j'te tape Kappa (https://www.twitch.tv/purpleorwel)")
+    if (commandName === config.data.config.prefixe + 'git') client.say(target, 'mon Github => https://github.com/Kae-Tempest')
+    if (commandName === config.data.config.prefixe + 'project') client.say(target, 'Mon project un un RPG, actuellement disponible sur Discord, au futur disponible sur web, mobile et twitch.')
+    if (commandName === config.data.config.prefixe + 'help') client.say(target, `|| ${commandNamelist.join(' || ')} ||`)
+    if (commandName === config.data.config.prefixe + 'battle') {target, battle()}
 
     function battle () {
         let playerHP = 50;
