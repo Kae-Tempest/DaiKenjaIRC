@@ -22,6 +22,19 @@ client.on("chat", (channel, userstate, message, self) => {
     const arrow = '=>'
     const twoPoints = ':'
     const badges = userstate.badges;
+    console.log(userstate['badges-raw'])
+    console.log(userstate['badges-raw'].length)
+    const badgesplite = userstate['badges-raw'].slice(0).split(",");
+    console.log(badgesplite)
+    const badgesplite2 = badgesplite[0].split("/")
+    console.log(badgesplite2)
+    const badgesplite3 = badgesplite[1].split("/")
+    console.log(badgesplite3)
+
+    for(let i = 0; i < badges.length; i++){
+
+    }
+    /*
     if (badges === null){
         if (userstate.color === null){
             let nick = chalk.yellow(`${user}`)
@@ -71,7 +84,7 @@ client.on("chat", (channel, userstate, message, self) => {
         let color = userstate.color
             let nick = colors.hex(color)(`${user}`);
             console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
-    }
+    }*/
 })
 
 
