@@ -2,6 +2,8 @@ const tmi = require('tmi.js');
 const config = require('./config')
 const chalk = require("chalk");
 const colors = new chalk.Instance({level: 3});
+const CryptoJS = require('crypto-js');
+
 const opts = {
     connection: {reconnect: true, secure: true,},
     identity: {username: "Dai_Kenja", password: config.password},
@@ -9,22 +11,72 @@ const opts = {
 };
 const client = new tmi.client(opts)
 client.connect();
+
 client.on("chat", (channel, userstate, message, self) => {
     if (self) return;
+        const channelName = CryptoJS.MD5(channel).toString()
+    const colorChannel = channelName.substr(0,6)
+    const colorChannelName = colors.hex(colorChannel)(channel.substr(1))
     const user = userstate.username;
     const text = message.trim();
     const arrow = '=>'
     const twoPoints = ':'
-    if (userstate.color === null){
-        let nick = chalk.yellow(`${user}`)
-        console.log(`${channel} ${twoPoints} ${nick} ${arrow} ${text}`);
-    } else {
+    const badges = userstate.badges;
+    if (badges === null){
+        if (userstate.color === null){
+            let nick = chalk.yellow(`${user}`)
+            console.log(`${colorChannelName}${twoPoints}${nick} ${arrow} ${text}`);
+        } else {
+            let color = userstate.color
+            let nick = colors.hex(color)(`${user}`);
+            console.log(`${colorChannelName}${twoPoints} ${nick} ${arrow} ${text}`);
+        }
+    } else if (badges.broadcaster === '1' && badges.subscriber === '3012'){
+        const badge = colors.hex('FF0000')("STREAMER-T3.12")
         let color = userstate.color
-        let nick = colors.hex(color)(`${user}`);
-        console.log(`${channel} ${twoPoints} ${nick} ${arrow} ${text}`);
+            let nick = colors.hex(color)(`${user}`);
+            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+    } else if (badges.founder === '0') {
+        const badge = colors.hex('FF1010')("FIRST SUB ♥")
+        let color = userstate.color
+            let nick = colors.hex(color)(`${user}`);
+            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+    } 
+    else if ( badges.subscriber === '3012'){
+        const badge = colors.hex('FFD700')("SUB.T3")
+            let color = userstate.color
+            let nick = colors.hex(color)(`${user}`);
+            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+        }
+    else if ( badges.vip === '1'){
+        const badge = colors.hex('9B30FF')("VIP")
+            let color = userstate.color
+            let nick = colors.hex(color)(`${user}`);
+            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+        }
+    else if (badges.premium === '1'){
+        const badge = colors.hex('0000FF')("PRIME")
+        let color = userstate.color
+            let nick = colors.hex(color)(`${user}`);
+            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+    }
+    else if (badges.glitchcon2020 === '1'){
+        const badge = colors.hex('FF69B4')("DINO")
+        let color = userstate.color
+            let nick = colors.hex(color)(`${user}`);
+            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+    }
+    else if (badges.moderator === '1'){
+        const badge = colors.hex('00FF00')("MODO")
+        let color = userstate.color
+            let nick = colors.hex(color)(`${user}`);
+            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
     }
 })
 
+
+
+/*
 client.on('message', (target, context, msg, self) => {
     if (self) return;
     const commandName = msg.trim();
@@ -63,6 +115,7 @@ client.on('message', (target, context, msg, self) => {
         }
     }
 });
+*/
 client.on('connected', () => {
     let now = new Date().toLocaleString('fr-FR')
     console.clear()
