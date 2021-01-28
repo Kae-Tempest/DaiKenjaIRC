@@ -75,8 +75,6 @@ client.on("chat", (channel, userstate, message, self) => {
 })
 
 
-
-/*
 client.on('message', (target, context, msg, self) => {
     if (self) return;
     const commandName = msg.trim();
@@ -115,7 +113,6 @@ client.on('message', (target, context, msg, self) => {
         }
     }
 });
-*/
 client.on('connected', () => {
     let now = new Date().toLocaleString('fr-FR')
     console.clear()
