@@ -1,13 +1,13 @@
 const tmi = require('tmi.js');
-const config = require('./config')
+const config = require("./twich.json")
 const chalk = require("chalk");
 const colors = new chalk.Instance({level: 3});
 const CryptoJS = require('crypto-js');
 
 const opts = {
     connection: {reconnect: true, secure: true,},
-    identity: {username: "Dai_Kenja", password: config.password},
-    channels: ["katsuhiiko"]
+    identity: {username: "Dai_Kenja", password: config.data.auth.bot.client_id},
+    channels: ["alexcaussades"]
 };
 const client = new tmi.client(opts)
 client.connect();
@@ -22,16 +22,20 @@ client.on("chat", (channel, userstate, message, self) => {
     const arrow = '=>'
     const twoPoints = ':'
     const badges = userstate.badges;
-    console.log(userstate['badges-raw'])
-    console.log(userstate['badges-raw'].length)
-    const badgesplite = userstate['badges-raw'].slice(0).split(",");
-    console.log(badgesplite)
-    const badgesplite2 = badgesplite[0].split("/")
-    console.log(badgesplite2)
-    const badgesplite3 = badgesplite[1].split("/")
-    console.log(badgesplite3)
-
-    for(let i = 0; i < badges.length; i++){
+    //console.log(userstate['badges-raw'])
+    //console.log(userstate['badges-raw'].length)
+    const badgesplite = userstate['badges-raw'].split(",");
+    console.log(badgesplite.length)
+    //console.log(badgesplite)
+    // const badgesplite2 = badgesplite[0].split("/")
+    // console.log(badgesplite2)
+    // const badgesplite3 = badgesplite[1].split("/")
+    // console.log(badgesplite3)
+    // const generalBages = [badgesplite2[0], badgesplite3[0]]
+    // console.log(generalBages)
+    for(let i = 0; i < badgesplite.length; i++){
+       const fianlity =  badgesplite[i].split("/")
+       console.log(fianlity[i])
 
     }
     /*
