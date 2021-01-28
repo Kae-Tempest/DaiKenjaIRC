@@ -21,23 +21,13 @@ client.on("chat", (channel, userstate, message, self) => {
     const text = message.trim();
     const arrow = '=>'
     const twoPoints = ':'
-    const badges = userstate.badges;
-    //console.log(userstate['badges-raw'])
-    //console.log(userstate['badges-raw'].length)
-    const badgesplite = userstate['badges-raw'].split(",");
-    console.log(badgesplite.length)
-    //console.log(badgesplite)
-    // const badgesplite2 = badgesplite[0].split("/")
-    // console.log(badgesplite2)
-    // const badgesplite3 = badgesplite[1].split("/")
-    // console.log(badgesplite3)
-    // const generalBages = [badgesplite2[0], badgesplite3[0]]
-    // console.log(generalBages)
-    for(let i = 0; i < badgesplite.length; i++){
-       const fianlity =  badgesplite[i].split("/")
-       console.log(fianlity[i])
+    const badges = userstate["badges-raw"];
+    const prout = badges.split(",")
+    prout.forEach(element => {
+        const log = element.split("/")
+        console.log(log[0])
+    })
 
-    }
     /*
     if (badges === null){
         if (userstate.color === null){
@@ -131,8 +121,8 @@ client.on('message', (target, context, msg, self) => {
     }
 });
 client.on('connected', () => {
-    let now = new Date().toLocaleString('fr-FR')
-    console.clear()
-    console.log('\033[2J')
-    console.log(` ${opts.identity.username} connected le ${now}`)
+    //let now = new Date().toLocaleString('fr-FR')
+    //console.clear()
+    //console.log('\033[2J')
+    console.log(opts.identity.username + ' connected')
 });
