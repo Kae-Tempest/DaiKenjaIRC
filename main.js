@@ -7,7 +7,7 @@ const CryptoJS = require('crypto-js');
 const opts = {
     connection: {reconnect: true, secure: true,},
     identity: {username: "Dai_Kenja", password: config.password},
-    channels: ["katsuhiiko","skarab42"]
+    channels: ["katsuhiiko"]
 };
 const client = new tmi.client(opts)
 client.connect();
@@ -43,16 +43,16 @@ client.on("chat", (channel, userstate, message, self) => {
             console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
     }
     else if (badges.founder === '0') {
-        const badge = colors.hex('FF1010')("FIRST SUB ♥")
-        let color = userstate.color
-        let nick = colors.hex(color)(`${user}`);
-        console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+            const badge = colors.hex('FF1010')("FIRST SUB ♥")
+            let color = userstate.color
+            let nick = colors.hex(color)(`${user}`);
+            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
     } 
     else if (badges.moderator === '1'){
-        const badge = colors.hex('00FF00')("MODO")
-        let color = userstate.color
-        let nick = colors.hex(color)(`${user}`);
-        console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+            const badge = colors.hex('00FF00')("MODO")
+            let color = userstate.color
+            let nick = colors.hex(color)(`${user}`);
+            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
     }
     else if ( badges.subscriber !== null){
             const badge = colors.hex('FFD700')("SUB")
