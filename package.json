@@ -17,9 +17,7 @@
     "url": "git+https://github.com/alexcaussades/DaiKenjaIRC.git"
   },
   "author": "katsuhiiko",
-  "contributors": [
-    "Alexcaussades <alexcaussades@gmail.com> (https://alexcaussades.com)"
-  ],
+  "contributors":["Alexcaussades <alexcaussades@gmail.com> (https://alexcaussades.com)"],
   "license": "Apache-2.0 License",
   "bugs": {
     "url": "https://github.com/alexcaussades/DaiKenjaIRC/issues"
@@ -27,7 +25,6 @@
   "homepage": "https://github.com/alexcaussades/DaiKenjaIRC#readme",
   "dependencies": {
     "chalk": "^4.1.0",
-    "chalk.js": "^0.0.5",
     "crypto-js": "^4.0.0",
     "tmi.js": "^1.7.1"
   }
