@@ -1,20 +1,20 @@
 const tmi = require('tmi.js');
-const config = require("./twich.json")
+const config = require("./config")
 const chalk = require("chalk");
 const colors = new chalk.Instance({level: 3});
 const CryptoJS = require('crypto-js');
 
 const opts = {
     connection: {reconnect: true, secure: true,},
-    identity: {username: config.data.config.username, password: config.data.auth.bot.client_id},
-    channels: [config.data.channel.katsuhiiko]
+    identity: {username: "DaiKenjaBot", password: config.password},
+    channels: ["katsuhiiko","skarab42"]
 };
 const client = new tmi.client(opts)
 client.connect();
 
 client.on("chat", (channel, userstate, message, self) => {
     if (self) return;
-        const channelName = CryptoJS.MD5(channel).toString()
+    const channelName = CryptoJS.MD5(channel).toString()
     const colorChannel = channelName.substr(0,6)
     const colorChannelName = colors.hex(colorChannel)(channel.substr(1))
     const user = userstate.username;
@@ -22,11 +22,13 @@ client.on("chat", (channel, userstate, message, self) => {
     const arrow = '=>'
     const twoPoints = ':'
     const badges = userstate["badges-raw"];
+    if(badges !== null){
     const prout = badges.split(",")
     prout.forEach(element => {
         const log = element.split("/")
-        console.log(log[0])
+        console.log(log[0] + '=>' + log[1])
     })
+    }
 
     /*
     if (badges === null){
@@ -87,13 +89,13 @@ client.on('message', (target, context, msg, self) => {
     const commandName = msg.trim();
     const discordLink = 'https://discord.gg/V9t5k5z'
     let commandNamelist = ['discord','skarab','purple','git','project','battle']
-    if (commandName === config.data.config.prefixe + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
-    if (commandName === config.data.config.prefixe + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
-    if (commandName === config.data.config.prefixe + 'purple') client.say(target, "Va suivre Purple ou j'te tape Kappa (https://www.twitch.tv/purpleorwel)")
-    if (commandName === config.data.config.prefixe + 'git') client.say(target, 'mon Github => https://github.com/Kae-Tempest')
-    if (commandName === config.data.config.prefixe + 'project') client.say(target, 'Mon project un un RPG, actuellement disponible sur Discord, au futur disponible sur web, mobile et twitch.')
-    if (commandName === config.data.config.prefixe + 'help') client.say(target, `|| ${commandNamelist.join(' || ')} ||`)
-    if (commandName === config.data.config.prefixe + 'battle') {target, battle()}
+    if (commandName === config.prefixe + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
+    if (commandName === config.prefixe + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
+    if (commandName === config.prefixe + 'purple') client.say(target, "Va suivre Purple ou j'te tape Kappa (https://www.twitch.tv/purpleorwel)")
+    if (commandName === config.prefixe + 'git') client.say(target, 'mon Github => https://github.com/Kae-Tempest')
+    if (commandName === config.prefixe + 'project') client.say(target, 'Mon project un un RPG, actuellement disponible sur Discord, au futur disponible sur web, mobile et twitch.')
+    if (commandName === config.prefixe + 'help') client.say(target, `|| ${commandNamelist.join(' || ')} ||`)
+    if (commandName === config.prefixe + 'battle') {target, battle()}
 
     function battle () {
         let playerHP = 50;
@@ -121,8 +123,8 @@ client.on('message', (target, context, msg, self) => {
     }
 });
 client.on('connected', () => {
-    //let now = new Date().toLocaleString('fr-FR')
-    //console.clear()
-    //console.log('\033[2J')
+    let now = new Date().toLocaleString('fr-FR')
+    console.clear()
+    console.log('\033[2J')
     console.log(opts.identity.username + ' connected')
 });
