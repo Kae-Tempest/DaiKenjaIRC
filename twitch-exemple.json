@@ -1,0 +1,20 @@
+{
+  "data": {
+    "auth": {
+      "bot": {
+        "accessToken": "",
+        "client_id": "",
+        "RefreshToken": ""
+      }
+    },
+    "channel": {
+      "katsuhiiko": "katsuhiiko",
+      "skarab42": "skarab42",
+      "alexcaussades": "alexcaussades"
+    },
+    "config": {
+      "prefixe": "&",
+      "username": "Dai_Kenja"
+    }
+  }
+}

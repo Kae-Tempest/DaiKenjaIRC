@@ -1,0 +1,31 @@
+{
+  "name": "daikenjairc",
+  "version": "1.0.0",
+  "description": "Dai kenja Bot Twitch",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "keywords": [
+    "twitch",
+    "bot",
+    "chat"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexcaussades/DaiKenjaIRC.git"
+  },
+  "author": "katsuhiiko",
+  "contributors":["Alexcaussades <alexcaussades@gmail.com> (https://alexcaussades.com)"],
+  "license": "Apache-2.0 License",
+  "bugs": {
+    "url": "https://github.com/alexcaussades/DaiKenjaIRC/issues"
+  },
+  "homepage": "https://github.com/alexcaussades/DaiKenjaIRC#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "crypto-js": "^4.0.0",
+    "tmi.js": "^1.7.1"
+  }
+}
