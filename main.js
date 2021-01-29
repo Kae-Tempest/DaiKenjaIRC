@@ -1,13 +1,13 @@
 const tmi = require('tmi.js');
-const config = require('./config')
 const chalk = require("chalk");
+const config = require('./config')
 const colors = new chalk.Instance({level: 3});
 const CryptoJS = require('crypto-js');
 
 const opts = {
     connection: {reconnect: true, secure: true,},
     identity: {username: "Dai_Kenja", password: config.password},
-    channels: ["katsuhiiko"]
+    channels: ["katsuhiiko","skarab42"]
 };
 const client = new tmi.client(opts)
 client.connect();
@@ -22,6 +22,7 @@ client.on("chat", (channel, userstate, message, self) => {
     const arrow = '=>'
     const twoPoints = ':'
     const badges = userstate.badges
+    //console.log(badges)
     if (badges === null){
         if (userstate.color === null){
             let nick = chalk.yellow(`${user}`)
@@ -54,7 +55,7 @@ client.on("chat", (channel, userstate, message, self) => {
             let nick = colors.hex(color)(`${user}`);
             console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
     }
-    else if ( badges.subscriber !== null){
+    else if ( badges.subscriber === '0'){
             const badge = colors.hex('FFD700')("SUB")
             let color = userstate.color
             let nick = colors.hex(color)(`${user}`);
@@ -67,7 +68,7 @@ client.on("chat", (channel, userstate, message, self) => {
             console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
     }
     else if (badges.premium === '1'){
-            const badge = colors.hex('0000FF')("PRIME")
+            const badge = colors.hex('0000AA')("PRIME")
             let color = userstate.color
             let nick = colors.hex(color)(`${user}`);
             console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
