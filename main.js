@@ -7,7 +7,7 @@ const CryptoJS = require('crypto-js');
 const opts = {
     connection: {reconnect: true, secure: true,},
     identity: {username: "Dai_Kenja", password: config.password},
-    channels: ["katsuhiiko","skarab42"]
+    channels: ["katsuhiiko",]
 };
 const client = new tmi.client(opts)
 client.connect();
@@ -95,6 +95,15 @@ client.on('message', (target, context, msg, self) => {
     if (commandName === config.prefix + 'project') client.say(target, 'Mon project un un RPG, actuellement disponible sur Discord, au futur disponible sur web, mobile et twitch.')
     if (commandName === config.prefix + 'help') client.say(target, `|| ${commandNamelist.join(' || ')} ||`)
     if (commandName === config.prefix + 'battle') {target, battle()}
+    if (commandName === config.prefix + 'kino') {target, Kino()}
+    if (commandName === config.prefix + 'slime') client.say(target, `I'm a Slime dummy blue Yeaaaaaaaah`)
+
+
+    function Kino(){
+        client.say(target, `Kino est dans la place !!!`)
+        client.say(target, `!slime`)
+    }
+
 
     function battle () {
         let playerHP = 50;
