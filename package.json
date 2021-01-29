@@ -1,0 +1,15 @@
+{
+    "name": "daikanjairc",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {},
+    "author": "Kae",
+    "license": "ISC",
+    "dependencies": {
+        "chalk": "^4.1.0",
+        "crypto-js": "^4.0.0",
+        "tmi.js": "^1.7.1"
+    }
+  }
+  

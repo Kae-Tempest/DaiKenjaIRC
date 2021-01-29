@@ -7,7 +7,7 @@ const CryptoJS = require('crypto-js');
 const opts = {
     connection: {reconnect: true, secure: true,},
     identity: {username: "Dai_Kenja", password: config.password},
-    channels: ["katsuhiiko"]
+    channels: ["katsuhiiko","skarab42"]
 };
 const client = new tmi.client(opts)
 client.connect();
@@ -87,7 +87,7 @@ client.on("chat", (channel, userstate, message, self) => {
     }
 })
 
-
+/*
 client.on('message', (target, context, msg, self) => {
     if (self) return;
     const commandName = msg.trim();
@@ -126,6 +126,7 @@ client.on('message', (target, context, msg, self) => {
         }
     }
 });
+*/
 client.on('connected', () => {
     let now = new Date().toLocaleString('fr-FR')
     console.clear()
