@@ -96,7 +96,7 @@ client.on('message', (target, context, msg, self) => {
     if (commandName === config.prefix + 'help') client.say(target, `|| ${commandNamelist.join(' || ')} ||`)
     if (commandName === config.prefix + 'battle') {target, battle()}
     if (commandName === config.prefix + 'kino') {target, Kino()}
-    if (commandName === config.prefix + 'slime') client.say(target, `I'm a Slime dummy blue Yeaaaaaaaah`)
+    if (commandName === config.prefix + 'slime') client.say(target, `/me I'm a Slime dummy blue Yeaaaaaaaah`)
 
 
     function Kino(){
