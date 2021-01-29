@@ -21,73 +21,67 @@ client.on("chat", (channel, userstate, message, self) => {
     const text = message.trim();
     const arrow = '=>'
     const twoPoints = ':'
-    const badges = userstate.badges;
-    /*
-    console.log(userstate['badges-raw'])
-    console.log(userstate['badges-raw'].length)
-    const badgesplite = userstate['badges-raw'].slice(0).split(",");
-    console.log(badgesplite)
-    const badgesplite2 = badgesplite[0].split("/")
-    console.log(badgesplite2)
-    const badgesplite3 = badgesplite[1].split("/")
-    console.log(badgesplite3)
-
-    for(let i = 0; i < badges.length; i++){
-    }
-    */
+    const badges = userstate.badges
     if (badges === null){
         if (userstate.color === null){
             let nick = chalk.yellow(`${user}`)
-            console.log(`${colorChannelName}${twoPoints}${nick} ${arrow} ${text}`);
+            console.log(`${colorChannelName}${twoPoints} ${nick} ${arrow} ${text}`);
         } else {
             let color = userstate.color
             let nick = colors.hex(color)(`${user}`);
             console.log(`${colorChannelName}${twoPoints} ${nick} ${arrow} ${text}`);
         }
-    } else if (badges.broadcaster === '1' && badges.subscriber === '3012'){
-        const badge = colors.hex('FF0000')("STREAMER-T3.12")
-        let color = userstate.color
+    } 
+    else if (badges !== null && userstate.color === null){
+            let nick = chalk.yellow(`${user}`)
+            console.log(`${colorChannelName}${twoPoints} ${nick} ${arrow} ${text}`);
+    } 
+    else if (badges.broadcaster === '1'){
+            const badge = colors.hex('DD0000')("STREAMER")
+            let color = userstate.color
             let nick = colors.hex(color)(`${user}`);
             console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
-    } else if (badges.founder === '0') {
+    }
+    else if (badges.founder === '0') {
         const badge = colors.hex('FF1010')("FIRST SUB ♥")
         let color = userstate.color
-            let nick = colors.hex(color)(`${user}`);
-            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+        let nick = colors.hex(color)(`${user}`);
+        console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
     } 
-    else if ( badges.subscriber === '3012'){
-        const badge = colors.hex('FFD700')("SUB.T3")
-            let color = userstate.color
-            let nick = colors.hex(color)(`${user}`);
-            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
-        }
-    else if ( badges.vip === '1'){
-        const badge = colors.hex('9B30FF')("VIP")
-            let color = userstate.color
-            let nick = colors.hex(color)(`${user}`);
-            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
-        }
-    else if (badges.premium === '1'){
-        const badge = colors.hex('0000FF')("PRIME")
+    else if (badges.moderator === '1'){
+        const badge = colors.hex('00FF00')("MODO")
         let color = userstate.color
+        let nick = colors.hex(color)(`${user}`);
+        console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+    }
+    else if ( badges.subscriber !== null){
+            const badge = colors.hex('FFD700')("SUB")
+            let color = userstate.color
+            let nick = colors.hex(color)(`${user}`);
+            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+    }
+    else if ( badges.vip === '1'){
+            const badge = colors.hex('9B30FF')("VIP")
+            let color = userstate.color
+            let nick = colors.hex(color)(`${user}`);
+            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+    }
+    else if (badges.premium === '1'){
+            const badge = colors.hex('0000FF')("PRIME")
+            let color = userstate.color
             let nick = colors.hex(color)(`${user}`);
             console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
     }
     else if (badges.glitchcon2020 === '1'){
-        const badge = colors.hex('FF69B4')("DINO")
-        let color = userstate.color
+            const badge = colors.hex('FF69B4')("DINO")
+            let color = userstate.color
             let nick = colors.hex(color)(`${user}`);
             console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
     }
-    else if (badges.moderator === '1'){
-        const badge = colors.hex('00FF00')("MODO")
-        let color = userstate.color
-            let nick = colors.hex(color)(`${user}`);
-            console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
-    }
+    
+
 })
 
-/*
 client.on('message', (target, context, msg, self) => {
     if (self) return;
     const commandName = msg.trim();
@@ -126,7 +120,7 @@ client.on('message', (target, context, msg, self) => {
         }
     }
 });
-*/
+
 client.on('connected', () => {
     let now = new Date().toLocaleString('fr-FR')
     console.clear()
