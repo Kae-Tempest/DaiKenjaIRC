@@ -102,6 +102,7 @@ client.on('message', (target, context, msg, self) => {
     function Kino(){
         client.say(target, `Kino est dans la place !!!`)
         client.say(target, `!slime`)
+        client.say(target, `/me I'm a Slime dummy blue Yeaaaaaaaah`)
     }
 
 
