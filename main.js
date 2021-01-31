@@ -22,7 +22,7 @@ client.on("chat", (channel, userstate, message, self) => {
     const arrow = '=>'
     const twoPoints = ':'
     const badges = userstate.badges
-    //console.log(badges)
+    console.log(badges)
     if (badges === null){
         if (userstate.color === null){
             let nick = chalk.yellow(`${user}`)
@@ -97,6 +97,15 @@ client.on('message', (target, context, msg, self) => {
     if (commandName === config.prefix + 'battle') {target, battle()}
     if (commandName === config.prefix + 'kino') {target, Kino()}
     if (commandName === config.prefix + 'slime') client.say(target, `/me I'm a Slime dummy blue Yeaaaaaaaah`)
+    if (commandName === config.prefix + 'malvi') {target, Malvi()}
+
+
+    function Malvi(){
+        client.say(target, `Malvi est dans la place !!!`);
+        client.say(target, `Elle est toute gentille mais attention au TO!`);
+        client.say(target, `Malvi the best sister of heart <3`);
+    }
+
 
 
     function Kino(){
