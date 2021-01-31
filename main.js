@@ -98,7 +98,7 @@ client.on('message', (target, context, msg, self) => {
     if (commandName === config.prefix + 'kino') {target, Kino()}
     if (commandName === config.prefix + 'slime') client.say(target, `/me I'm a Slime dummy blue Yeaaaaaaaah`)
     if (commandName === config.prefix + 'malvi') {target, Malvi()}
-
+    if (commandName === config.prefix + 'song') {target, song()}
 
     function Malvi(){
         client.say(target, `Malvi est dans la place !!!`);
@@ -106,14 +106,17 @@ client.on('message', (target, context, msg, self) => {
         client.say(target, `Malvi the best sister of heart <3`);
     }
 
-
-
     function Kino(){
         client.say(target, `Kino est dans la place !!!`)
         client.say(target, `!slime`)
         client.say(target, `/me I'm a Slime dummy blue Yeaaaaaaaah`)
     }
 
+    function song(){
+        client.say(target, `!slime`)
+        client.say(target, `/me I'm a Slime dummy blue Yeaaaaaaaah`)
+        client.say(target, `https://www.youtube.com/watch?v=2n3_lZXFhJk`)
+    }
 
     function battle () {
         let playerHP = 50;
