@@ -22,7 +22,7 @@ client.on("chat", (channel, userstate, message, self) => {
     const arrow = '=>'
     const twoPoints = ':'
     const badges = userstate.badges
-    console.log(badges)
+    //console.log(badges)
     if (badges === null) {
         if (userstate.color === null) {
             let nick = chalk.yellow(`${user}`)
