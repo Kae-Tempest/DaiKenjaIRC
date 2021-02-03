@@ -32,6 +32,10 @@ client.on("chat", (channel, userstate, message, self) => {
             let nick = colors.hex(color)(`${user}`);
             console.log(`${colorChannelName}${twoPoints} ${nick} ${arrow} ${text}`);
         }
+    } else if (userstate.username === "mallviina") {
+        const badge = colors.hex('FF0000')("♥♥♥")
+        let nick = colors.hex('708090')(`${user}`);
+        console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
     } else if (badges !== null && userstate.color === null) {
         let nick = chalk.yellow(`${user}`)
         console.log(`${colorChannelName}${twoPoints} ${nick} ${arrow} ${text}`);
