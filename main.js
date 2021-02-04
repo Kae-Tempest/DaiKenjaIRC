@@ -36,7 +36,13 @@ client.on("chat", (channel, userstate, message, self) => {
         const badge = colors.hex('FF0000')("♥♥♥")
         let nick = colors.hex('708090')(`${user}`);
         console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
-    } else if (badges !== null && userstate.color === null) {
+    } else if (userstate.username === "naminoe") {
+        const badge = colors.hex('9E0E40')("Graphiste ♥")
+        let color = userstate.color
+        let nick = colors.hex(color)(`${user}`);
+        console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+    }
+    else if (badges !== null && userstate.color === null) {
         let nick = chalk.yellow(`${user}`)
         console.log(`${colorChannelName}${twoPoints} ${nick} ${arrow} ${text}`);
     } else if (badges.broadcaster === '1') {
@@ -117,9 +123,8 @@ client.on('message', (target, context, msg, self) => {
     }
 
     function song() {
-        client.say(target, `!slime`)
         client.say(target, `/me I'm a Slime dummy blue Yeaaaaaaaah`)
-        client.say(target, `https://www.youtube.com/watch?v=2n3_lZXFhJk`)
+        client.say(target, `link of song => https://www.youtube.com/watch?v=2n3_lZXFhJk`)
     }
 
     function battle() {
