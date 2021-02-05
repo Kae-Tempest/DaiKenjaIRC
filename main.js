@@ -7,7 +7,7 @@ const CryptoJS = require('crypto-js');
 const opts = {
     connection: {reconnect: true, secure: true,},
     identity: {username: "Dai_Kenja", password: config.password},
-    channels: ["katsuhiiko",]
+    channels: ["katsuhiiko"]
 };
 const client = new tmi.client(opts)
 client.connect();
