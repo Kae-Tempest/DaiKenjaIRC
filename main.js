@@ -80,6 +80,11 @@ client.on("chat", (channel, userstate, message, self) => {
         let color = userstate.color
         let nick = colors.hex(color)(`${user}`);
         console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
+    } else if (badges["glhf-pledge"] === '1') {
+        const badge = colors.hex('808080')("PLEDGE")
+        let color = userstate.color
+        let nick = colors.hex(color)(`${user}`);
+        console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
     }
 
 
