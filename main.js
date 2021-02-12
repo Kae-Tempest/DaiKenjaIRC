@@ -7,7 +7,7 @@ const CryptoJS = require('crypto-js');
 const opts = {
     connection: {reconnect: true, secure: true,},
     identity: {username: "Dai_Kenja", password: config.password},
-    channels: ["katsuhiiko"]
+    channels: ["katsuhiiko","amanp0"]
 };
 const client = new tmi.client(opts)
 client.connect();
@@ -102,8 +102,10 @@ client.on('message', (target, context, msg, self) => {
     if (self) return;
     const commandName = msg.trim();
     const discordLink = 'https://discord.gg/V9t5k5z'
-    let commandNamelist = ['discord', 'skarab', 'purple', 'git', 'project', 'battle','slime','malvi','kino','song','sowl']
+    const discordLink2 = 'https://discord.gg/5Hmn7wMqBX'
+    let commandNamelist = ['discord', 'skarab', 'purple', 'git', 'project', 'battle','slime','malvi','kino','song','sowl','amanp0']
     if (commandName === config.prefix + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
+    if (commandName === config.prefix + 'amanp0') client.say(target, `Lien pour rejoindre le discord de Amanp0 => ${discordLink2}`)
     if (commandName === config.prefix + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
     if (commandName === config.prefix + 'purple') client.say(target, "Va suivre Purple ou j'te tape Kappa (https://www.twitch.tv/purpleorwel)")
     if (commandName === config.prefix + 'git') client.say(target, 'mon Github => https://github.com/Kae-Tempest')
