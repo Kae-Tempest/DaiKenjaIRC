@@ -97,11 +97,10 @@ client.on("chat", (channel, userstate, message, self) => {
         console.log(`${colorChannelName}${twoPoints} ${badge} ${nick} ${arrow} ${text}`);
     }
 })
-
+const discordLink = 'https://discord.gg/V9t5k5z'
 client.on('message', (target, context, msg, self) => {
     if (self) return;
     const commandName = msg.trim();
-    const discordLink = 'https://discord.gg/V9t5k5z'
     let commandNamelist = ['discord', 'skarab', 'purple', 'git', 'project', 'battle','slime','malvi','kino','song','sowl']
     if (commandName === config.prefix + 'discord') client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
     if (commandName === config.prefix + 'skarab') client.say(target, "Va suivre Skarab ou j'te tape Kappa (https://www.twitch.tv/skarab42)")
@@ -123,6 +122,10 @@ client.on('message', (target, context, msg, self) => {
     if (commandName === config.prefix + 'song') {
         target, song()
     }
+
+    setInterval(() => {
+        client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
+    },1800000)
 
     function Malvi() {
         client.say(target, `Malvi est dans la place !!!`);
