@@ -7,7 +7,7 @@ const CryptoJS = require('crypto-js');
 const opts = {
     connection: {reconnect: true, secure: true,},
     identity: {username: "Dai_Kenja", password: config.password},
-    channels: ["katsuhiiko"]
+    channels: ["kaetempest"]
 };
 const client = new tmi.client(opts)
 client.connect();
@@ -122,10 +122,6 @@ client.on('message', (target, context, msg, self) => {
     if (commandName === config.prefix + 'song') {
         target, song()
     }
-
-    setInterval(() => {
-        client.say(target, `Lien pour rejoindre mon discord => ${discordLink}`)
-    },1800000)
 
     function Malvi() {
         client.say(target, `Malvi est dans la place !!!`);
